@@ -10,14 +10,8 @@
 
 <!-- markdown-toc end -->
 
-## ScreenShots
-
-![Alt text](/screenshots/sc_1.png?raw=true "ScreenShot 1")
-![Alt text](/screenshots/sc_2.png?raw=true "ScreenShot 2")
-
 ## Requirements
 
-- [kitty](https://sw.kovidgoyal.net/kitty/#quickstart)
 - [yabai](https://github.com/koekeishiya/yabai#install)
 - [skhd](https://github.com/koekeishiya/skhd#install)
 - [jq](https://stedolan.github.io/jq/download/)
