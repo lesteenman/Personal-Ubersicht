@@ -1,6 +1,7 @@
 import { defaultTheme } from "./lib/style";
 
-const command = "bash osiris/lib/spotify/get_track_metadata.sh";
+const command = "bash osiris/lib/spotify.sh";
+
 const refreshFrequency = 5000; // ms
 
 const renderClass = `
@@ -8,20 +9,22 @@ const renderClass = `
   left: auto;
   bottom: auto;
   font-weight: bold;
-  margin-right: calc(13ch + 13px);
+  margin-right: calc(13ch + 100px);
 `;
 
 const render = ({ output }) => {
   if (!output) return null;
 
-  const { name, artists } = JSON.parse(output);
+  let [ name, artists, state ] = output.split('||');
+  console.log(output, output.split('||'))
+  console.log(state, name, artists)
   if (!name || !artists) return null;
 
-  const artistsName = artists.map(artist => artist.name).join(" X ");
-  let spotify = `${artistsName} - ${name}`;
-  if (spotify.length > 34) spotify = `${spotify.slice(0, 30)} ...`;
+  console.log('trim name?', name, name.length);
+  if (name.length > 20) name = `${name.slice(0, 17)}...`;
+  if (artists.length > 20) artists = `${artists.slice(0, 17)}...`;
 
-  return <div>{`${spotify}`}</div>;
+  return <div>{`${name} - ${artists} (${state.trim()})`}</div>;
 };
 
 export { command, refreshFrequency, renderClass as className, render };
